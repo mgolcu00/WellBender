@@ -13,4 +13,13 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="BaseTextStyle" >
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="Text.Body" parent="BaseTextStyle">
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+    </style>
+
+
 </resources>
