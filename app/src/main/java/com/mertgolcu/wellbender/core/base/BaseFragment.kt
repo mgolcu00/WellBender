@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.mertgolcu.wellbender.BR
 
 /**
  * Created by Mert Gölcü on 15.12.2022.
@@ -49,7 +50,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
         if (rootView == null) {
             binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
             rootView = binding.root
-            // binding.setVariable(BR.viewModel, viewModel) // set data binding viewModels from root
+             binding.setVariable(BR.viewModel, viewModel) // set data binding viewModels from root
             binding.lifecycleOwner = viewLifecycleOwner
         }
         return rootView
