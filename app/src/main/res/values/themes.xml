@@ -32,6 +32,11 @@
         <item name="android:textSize">@dimen/text_size_24sp</item>
         <item name="fontFamily">@font/nunito_bold</item>
     </style>
+    <style name="Text.Header.Tiny" parent="BaseTextStyle">
+        <item name="android:textSize">@dimen/text_size_18sp</item>
+        <item name="fontFamily">@font/nunito_bold</item>
+    </style>
 
 
+    <dimen name="text_size_18sp">18sp</dimen>
 </resources>
