@@ -14,11 +14,23 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="BaseTextStyle" >
-        <item name="fontFamily">sans-serif</item>
+        <item name="fontFamily">@font/nunito</item>
+        <item name="android:textColor">@color/deep</item>
     </style>
 
     <style name="Text.Body" parent="BaseTextStyle">
         <item name="android:textSize">@dimen/text_size_16sp</item>
+    </style>
+    <style name="Text.Small" parent="BaseTextStyle">
+        <item name="android:textSize">@dimen/text_size_12sp</item>
+    </style>
+    <style name="Text.Header" parent="BaseTextStyle">
+        <item name="android:textSize">@dimen/text_size_40sp</item>
+        <item name="fontFamily">@font/nunito_bold</item>
+    </style>
+    <style name="Text.Header.Small" parent="BaseTextStyle">
+        <item name="android:textSize">@dimen/text_size_24sp</item>
+        <item name="fontFamily">@font/nunito_bold</item>
     </style>
 
 
