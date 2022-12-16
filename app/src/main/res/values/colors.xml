@@ -20,5 +20,8 @@
 
 
     <color name="orange">#FE8235</color>
+    <color name="soft_orange">#F09E54</color>
+    <color name="light_orange">#FEF3E7</color>
+    <color name="dark_brown">#573926</color>
 
 </resources>

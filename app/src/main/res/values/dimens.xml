@@ -15,4 +15,6 @@
     <dimen name="radius_24dp">24dp</dimen>
     <dimen name="radius_32dp">32dp</dimen>
     <dimen name="size_128dp">128dp</dimen>
+    <dimen name="radius_20dp">20dp</dimen>
+    <dimen name="radius_48dp">48dp</dimen>
 </resources>

@@ -24,7 +24,11 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         const val MOCK_AVATAR_URL = "https://avatars2.githubusercontent.com/u/44591905"
         val MOCK_EMOTION_LIST = arrayListOf(
             MockEmotion("Happy", R.drawable.ic_happy_emoji),
-            MockEmotion("Happy", R.drawable.ic_happy_emoji),
+            MockEmotion("Happy", R.drawable.ic_happy_emoji, color = R.color.deep),
+            MockEmotion("Happy", R.drawable.ic_happy_emoji, color = R.color.peach),
+            MockEmotion("Happy", R.drawable.ic_happy_emoji, color = R.color.orange),
+            MockEmotion("Happy", R.drawable.ic_happy_emoji, color = R.color.iris),
+            MockEmotion("Happy", R.drawable.ic_happy_emoji, color = R.color.onyx),
             MockEmotion("Happy", R.drawable.ic_happy_emoji),
         )
     }
@@ -33,5 +37,6 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
 data class MockEmotion(
     val text: String,
     val image: Int,
-    val imageUrl: String? = null
+    val imageUrl: String? = null,
+    val color: Int? = R.color.purple_peach
 )

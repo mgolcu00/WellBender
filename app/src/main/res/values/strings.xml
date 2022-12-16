@@ -7,4 +7,7 @@
     <string name="good_afternoon">Good Afternoon,</string>
     <string name="example_name">Mert!</string>
     <string name="how_feeling_today">How are you feeling today?</string>
+    <string name="read_today">Read Today</string>
+    <string name="read_today_desc">Let’s open up to the things that matter the most</string>
+    <string name="read_now">Read Now</string>
 </resources>
