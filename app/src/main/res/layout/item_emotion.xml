@@ -10,7 +10,7 @@
         android:id="@+id/layout_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin_8dp"
+        android:layout_marginEnd="@dimen/margin_8dp"
         android:background="@drawable/rounded_background_8dp"
         android:backgroundTint="@color/purple_peach"
         android:padding="@dimen/margin_8dp"
@@ -28,15 +28,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/light"
             tools:src="@drawable/ic_happy_emoji" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_view_emotion_title"
-        style="@style/Text.Body"
+        style="@style/Text.Header.Tiny"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_14sp"
+        android:layout_marginEnd="@dimen/margin_8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

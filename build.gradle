@@ -21,4 +21,5 @@ ext {
     dagger_hilt_plugin_version = "2.42"
     glide_version = "4.13.2"
     room_version = "2.4.3"
+    data_store_version="1.0.0"
 }

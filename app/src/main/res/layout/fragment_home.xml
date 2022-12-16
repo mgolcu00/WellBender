@@ -11,163 +11,170 @@
             type="com.mertgolcu.wellbender.ui.home.HomeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/light">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_welcome"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:background="@color/light">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/image_view_avatar"
-                android:layout_width="@dimen/size_48dp"
-                android:layout_height="@dimen/size_48dp"
-                android:layout_marginStart="@dimen/margin_16dp"
-                android:layout_marginTop="@dimen/margin_16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_view_welcome"
-                style="@style/Text.Header.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_16dp"
-                android:layout_marginTop="@dimen/margin_16dp"
-                android:text="@{viewModel.welcomeMessage}"
-                app:fontFamily="@font/nunito"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image_view_avatar"
-                tools:text="@string/good_afternoon" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_view_name"
-                style="@style/Text.Header.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_16dp"
-                android:layout_marginBottom="@dimen/margin_16dp"
-                android:text="@{viewModel.userName}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_welcome"
-                tools:text="@string/example_name" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_daily_emotion"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_welcome">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_view_title_emotion_question"
-                style="@style/Text.Header.Tiny"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_16dp"
-                android:layout_marginTop="@dimen/margin_16dp"
-                android:text="@string/how_feeling_today"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_emotions"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_welcome"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_16dp"
-                android:background="@color/light"
-                android:orientation="horizontal"
-                android:padding="@dimen/margin_8dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_title_emotion_question"
-                tools:itemCount="8"
-                tools:listitem="@layout/item_emotion" />
+                app:layout_constraintTop_toTopOf="parent">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_view_avatar"
+                    android:layout_width="@dimen/size_48dp"
+                    android:layout_height="@dimen/size_48dp"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_today_card"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16dp"
-            android:layout_marginTop="@dimen/margin_8dp"
-            android:layout_marginEnd="@dimen/margin_16dp"
-            android:background="@drawable/rounded_background_16dp"
-            android:backgroundTint="@color/light_orange"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_daily_emotion">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_welcome"
+                    style="@style/Text.Header.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:text="@{viewModel.welcomeMessage}"
+                    app:fontFamily="@font/nunito"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/image_view_avatar"
+                    tools:text="@string/good_afternoon" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_view_today_card_title"
-                style="@style/Text.Header.Small"
-                android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_name"
+                    style="@style/Text.Header.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginBottom="@dimen/margin_16dp"
+                    android:text="@{viewModel.userName}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_welcome"
+                    tools:text="@string/example_name" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_daily_emotion"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_16dp"
-                android:layout_marginTop="@dimen/margin_16dp"
-                android:text="@string/read_today"
-                android:textColor="@color/dark_brown"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/layout_welcome">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_view_today_card_description"
-                style="@style/Text.Body"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_title_emotion_question"
+                    style="@style/Text.Header.Tiny"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:text="@string/how_feeling_today"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_emotions"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_16dp"
+                    android:background="@color/light"
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="@dimen/margin_16dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_title_emotion_question"
+                    tools:itemCount="8"
+                    tools:listitem="@layout/item_emotion" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_today_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_16dp"
                 android:layout_marginTop="@dimen/margin_8dp"
-                android:layout_marginEnd="@dimen/margin_8dp"
-                android:text="@string/read_today_desc"
-                android:textColor="@color/dark_brown"
-                app:layout_constraintEnd_toStartOf="@id/image_view_today_card"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_today_card_title" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/image_view_today_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin_16dp"
-                android:src="@drawable/ic_meetup"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@drawable/rounded_background_16dp"
+                android:backgroundTint="@color/light_orange"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_today_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_16dp"
-                android:layout_marginTop="@dimen/margin_16dp"
-                android:layout_marginBottom="@dimen/margin_16dp"
-                android:backgroundTint="@color/orange"
-                android:fontFamily="@font/nunito_bold"
-                android:text="@string/read_now"
-                android:textAllCaps="false"
-                android:textSize="@dimen/text_size_18sp"
-                app:icon="@drawable/ic_calendar"
-                app:iconGravity="end"
-                app:iconPadding="@dimen/margin_8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_today_card_description" />
+                app:layout_constraintTop_toBottomOf="@id/layout_daily_emotion">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_today_card_title"
+                    style="@style/Text.Header.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:text="@{viewModel.todayCardTitle}"
+                    android:textColor="@color/dark_brown"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/read_today" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_today_card_description"
+                    style="@style/Text.Body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:layout_marginEnd="@dimen/margin_8dp"
+                    android:text="@{viewModel.todayCardDescription}"
+                    android:textColor="@color/dark_brown"
+                    app:layout_constraintEnd_toStartOf="@id/image_view_today_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_today_card_title"
+                    tools:text="@string/read_today_desc" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_view_today_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:src="@drawable/ic_meetup"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_today_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:layout_marginBottom="@dimen/margin_16dp"
+                    android:backgroundTint="@color/orange"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="@{viewModel.todayCardButtonText}"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_size_18sp"
+                    app:icon="@drawable/ic_calendar"
+                    app:iconGravity="end"
+                    app:iconPadding="@dimen/margin_8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_today_card_description"
+                    tools:text="@string/read_now" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
