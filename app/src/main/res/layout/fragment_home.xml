@@ -164,7 +164,7 @@
                     android:text="@{viewModel.todayCardButtonText}"
                     android:textAllCaps="false"
                     android:textSize="@dimen/text_size_18sp"
-                    app:icon="@drawable/ic_calendar"
+                    app:icon="@drawable/ic_timer"
                     app:iconGravity="end"
                     app:iconPadding="@dimen/margin_8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
