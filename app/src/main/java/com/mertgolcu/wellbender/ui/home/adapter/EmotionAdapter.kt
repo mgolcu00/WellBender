@@ -37,7 +37,7 @@ class EmotionAdapter : ListAdapter<Emotion, EmotionAdapter.EmotionViewHolder>(
     var onClickItem: ((item: Emotion) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmotionViewHolder {
-        val binding = ItemEmotionBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = ItemEmotionBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return EmotionViewHolder(binding)
     }
 

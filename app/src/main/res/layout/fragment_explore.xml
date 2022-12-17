@@ -16,104 +16,145 @@
         android:layout_height="match_parent"
         android:background="@color/light">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_upcoming_write"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_upcoming"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_16dp"
-            android:layout_marginTop="@dimen/margin_16dp"
-            android:background="@drawable/rounded_background_16dp"
-            android:backgroundTint="@color/light_orange"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginVertical="@dimen/margin_16dp"
+            android:visibility="gone"
+            app:cardCornerRadius="@dimen/margin_16dp"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_view_title_upcoming"
-                style="@style/Text.Header.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_16dp"
-                android:layout_marginTop="@dimen/margin_16dp"
-                android:textColor="@color/onyx"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/upcoming_write_title_example" />
-
-            <View
-                android:id="@+id/view_line"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1dp"
-                android:layout_marginHorizontal="@dimen/margin_16dp"
-                android:background="@drawable/rounded_background_8dp"
-                android:backgroundTint="@color/gray"
-                app:layout_constraintTop_toBottomOf="@id/text_view_title_upcoming" />
+                android:layout_height="match_parent"
+                android:background="@color/light_orange">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_view_author_upcoming"
-                style="@style/Text.Body"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_16dp"
-                android:layout_marginTop="@dimen/margin_8dp"
-                android:drawableStart="@drawable/ic_person"
-                android:drawablePadding="@dimen/margin_4dp"
-                android:drawableTint="@color/gray"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view_line"
-                tools:text="@string/example_name" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_view_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/size_128dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/backgrounds/scenic"
+                    tools:visibility="gone" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_view_read_time_upcoming"
-                style="@style/Text.Body"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_8dp"
-                android:layout_marginEnd="@dimen/margin_16dp"
-                android:drawableStart="@drawable/ic_timer"
-                android:drawablePadding="@dimen/margin_4dp"
-                android:drawableTint="@color/gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/text_view_author_upcoming"
-                app:layout_constraintTop_toBottomOf="@id/view_line"
-                tools:text="@string/min_8" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_title"
+                    style="@style/Text.Header.Small"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:textColor="@color/dark_brown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/image_view_header"
+                    tools:text="@string/upcoming_write_title_example" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_view_publish_date_upcoming"
-                style="@style/Text.Body"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_16dp"
-                android:layout_marginTop="@dimen/margin_4dp"
-                android:drawableStart="@drawable/ic_calendar"
-                android:drawablePadding="@dimen/margin_4dp"
-                android:drawableTint="@color/gray"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_author_upcoming"
-                tools:text="31 March 2022" />
+                <View
+                    android:id="@+id/view_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_1dp"
+                    android:layout_marginHorizontal="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:background="@drawable/rounded_background_8dp"
+                    android:backgroundTint="@color/dust"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_title" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_read_or_wait_upcoming"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_16dp"
-                android:layout_marginTop="@dimen/margin_8dp"
-                android:layout_marginBottom="@dimen/margin_16dp"
-                android:backgroundTint="@color/orange"
-                android:fontFamily="@font/nunito_bold"
-                android:paddingVertical="@dimen/margin_8dp"
-                android:textAllCaps="false"
-                android:textSize="@dimen/text_size_18sp"
-                app:icon="@drawable/ic_calendar"
-                app:iconGravity="end"
-                app:iconPadding="@dimen/margin_8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_author_upcoming"
-                tools:text="@string/reschedule" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_author"
+                    style="@style/Text.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawablePadding="@dimen/margin_4dp"
+                    android:drawableTint="@color/soft_orange"
+                    android:textColor="@color/dark_brown"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_line"
+                    tools:text="@string/example_author_name" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_read_time"
+                    style="@style/Text.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:drawableStart="@drawable/ic_timer"
+                    android:drawablePadding="@dimen/margin_4dp"
+                    android:drawableTint="@color/soft_orange"
+                    android:textColor="@color/dark_brown"
+                    app:layout_constraintStart_toStartOf="@id/button_reschedule"
+                    app:layout_constraintTop_toBottomOf="@id/view_line"
+                    tools:text="@string/min_8" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_publish_date"
+                    style="@style/Text.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_4dp"
+                    android:drawableStart="@drawable/ic_calendar"
+                    android:drawablePadding="@dimen/margin_4dp"
+                    android:drawableTint="@color/gray"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_author"
+                    tools:text="31 March 2022" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_reschedule"
+                    style="@style/Text.Header.Tiny"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:layout_marginBottom="@dimen/margin_16dp"
+                    android:backgroundTint="@color/orange"
+                    android:paddingVertical="@dimen/margin_16dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:cornerRadius="@dimen/radius_8dp"
+                    app:icon="@drawable/ic_calendar"
+                    app:iconGravity="end"
+                    app:iconPadding="@dimen/margin_8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_author"
+                    tools:text="@string/reschedule"
+                    tools:visibility="visible" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:id="@+id/view_parent_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:layout_marginHorizontal="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:background="@color/dust"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/card_upcoming" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_writes"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_parent_line"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_blog_write" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

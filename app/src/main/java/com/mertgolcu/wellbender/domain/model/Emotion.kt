@@ -3,7 +3,6 @@ package com.mertgolcu.wellbender.domain.model
 
 import com.mertgolcu.wellbender.R
 import com.mertgolcu.wellbender.ext.getId
-import com.mertgolcu.wellbender.ext.getResourceId
 
 /**
  * Created by Mert Gölcü on 16.12.2022.

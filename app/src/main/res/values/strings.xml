@@ -13,4 +13,7 @@
     <string name="upcoming_write_title_example">Benefits of Drinking Water</string>
     <string name="min_8">8 min</string>
     <string name="reschedule">Reschedule</string>
+    <string name="example_author_name">tentengolcu</string>
+    <string name="read">Read</string>
+    <string name="mark">Mark</string>
 </resources>

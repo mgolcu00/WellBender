@@ -1,9 +1,13 @@
 package com.mertgolcu.wellbender.ui.explore
 
+import android.os.Bundle
+import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mertgolcu.wellbender.R
 import com.mertgolcu.wellbender.core.base.BaseFragment
 import com.mertgolcu.wellbender.databinding.FragmentExploreBinding
 import com.mertgolcu.wellbender.databinding.FragmentHistoryBinding
+import com.mertgolcu.wellbender.ui.explore.adapter.BlogWriteAdapter
 import com.mertgolcu.wellbender.ui.history.HistoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,4 +19,34 @@ import dagger.hilt.android.AndroidEntryPoint
 class ExploreFragment :
     BaseFragment<FragmentExploreBinding, ExploreViewModel>(R.layout.fragment_explore) {
     override fun getViewModelClass() = ExploreViewModel::class.java
+
+
+    private var blogWriteAdapter: BlogWriteAdapter? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initObservers()
+        initBlogWritesAdapter()
+    }
+
+    private fun initObservers() {
+        viewModel.blogWriteList.observe(viewLifecycleOwner) {
+            blogWriteAdapter?.submitList(it)
+        }
+    }
+
+    private fun initBlogWritesAdapter() {
+        blogWriteAdapter = BlogWriteAdapter()
+        binding.recyclerViewWrites.layoutManager = LinearLayoutManager(requireActivity())
+
+        blogWriteAdapter?.onClickRead = {
+            // todo : on click read
+        }
+        blogWriteAdapter?.onClickBookmark = { item, mark ->
+            // todo : on click book mark
+        }
+
+        binding.recyclerViewWrites.adapter = blogWriteAdapter
+    }
 }
