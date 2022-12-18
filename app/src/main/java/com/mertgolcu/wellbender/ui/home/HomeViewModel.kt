@@ -7,6 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.mertgolcu.wellbender.R
 import com.mertgolcu.wellbender.core.base.BaseViewModel
 import com.mertgolcu.wellbender.domain.model.Emotion
+import com.mertgolcu.wellbender.domain.model.card.TodayCard
+import com.mertgolcu.wellbender.domain.model.card.mockBuyMoreCard
+import com.mertgolcu.wellbender.domain.model.card.mockTodayCard
 import com.mertgolcu.wellbender.domain.store.WellBenderDataStoreManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -31,11 +34,10 @@ class HomeViewModel @Inject constructor(
     val emojiList = MutableLiveData(EMOTION_LIST)
 
     // today card
-    val todayCardTitle = MutableLiveData(MOCK_TODAY_CARD.title)
-    val todayCardDescription = MutableLiveData(MOCK_TODAY_CARD.description)
-    val todayCardButtonText = MutableLiveData(MOCK_TODAY_CARD.buttonText)
-    val todayCardImageUrl = MutableLiveData(MOCK_TODAY_CARD.imageUrl ?: MOCK_TODAY_CARD.imageId)
+    val todayCard = MutableLiveData(mockTodayCard)
 
+    // buy more card
+    val buyMoreCard = MutableLiveData(mockBuyMoreCard)
 
     init {
         fetchUserData()
@@ -64,10 +66,17 @@ class HomeViewModel @Inject constructor(
             MockEmotion("Happy", R.drawable.ic_happy_emoji, color = R.color.onyx),
             MockEmotion("Happy", R.drawable.ic_happy_emoji),
         )
-        val MOCK_TODAY_CARD = MockTodayCard(
+        val MOCK_TODAY_CARD = TodayCard(
             title = "Read Today",
             description = "Let’s open up to the things that matter the most",
             buttonText = "Read Now",
+            imageUrl = "ic_health"
+        )
+        val MOCK_BUY_MORE = TodayCard(
+            title = "Plan Expired",
+            description = "Get back blog access and session credits",
+            buttonText = "Buy More",
+            imageUrl = "ic_cloud_download"
         )
         val EMOTION_LIST = arrayListOf(
             Emotion(

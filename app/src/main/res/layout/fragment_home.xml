@@ -87,10 +87,10 @@
                     android:id="@+id/recycler_view_emotions"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16dp"
                     android:layout_marginBottom="@dimen/margin_16dp"
                     android:background="@color/light"
                     android:orientation="horizontal"
-                    android:layout_marginHorizontal="@dimen/margin_16dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -121,7 +121,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16dp"
                     android:layout_marginTop="@dimen/margin_16dp"
-                    android:text="@{viewModel.todayCardTitle}"
                     android:textColor="@color/dark_brown"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -135,7 +134,6 @@
                     android:layout_marginStart="@dimen/margin_16dp"
                     android:layout_marginTop="@dimen/margin_8dp"
                     android:layout_marginEnd="@dimen/margin_8dp"
-                    android:text="@{viewModel.todayCardDescription}"
                     android:textColor="@color/dark_brown"
                     app:layout_constraintEnd_toStartOf="@id/image_view_today_card"
                     app:layout_constraintStart_toStartOf="parent"
@@ -144,8 +142,8 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/image_view_today_card"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/size_128dp"
+                    android:layout_height="@dimen/size_128dp"
                     android:layout_marginEnd="@dimen/margin_16dp"
                     android:src="@drawable/ic_meetup"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -161,12 +159,11 @@
                     android:layout_marginBottom="@dimen/margin_16dp"
                     android:backgroundTint="@color/orange"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="@{viewModel.todayCardButtonText}"
                     android:textAllCaps="false"
                     android:textSize="@dimen/text_size_18sp"
                     app:icon="@drawable/ic_timer"
+                    android:paddingVertical="@dimen/margin_8dp"
                     app:iconGravity="end"
-                    app:iconPadding="@dimen/margin_8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/text_view_today_card_description"
@@ -174,6 +171,115 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_buy_more"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:background="@drawable/rounded_background_16dp"
+                android:backgroundTint="@color/night_green"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_today_card"
+                tools:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_buy_more_card_title"
+                    style="@style/Text.Header.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:text="@string/plan_expired"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_buy_more_card_description"
+                    style="@style/Text.Body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:layout_marginEnd="@dimen/margin_8dp"
+                    android:text="@string/buy_more_desc"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@id/image_view_buy_more"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_buy_more_card_title" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_view_buy_more"
+                    android:layout_width="@dimen/size_128dp"
+                    android:layout_height="@dimen/size_128dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_cloud_download"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/soft_green" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_buy_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:layout_marginBottom="@dimen/margin_16dp"
+                    android:backgroundTint="@color/soft_green"
+                    android:fontFamily="@font/nunito_bold"
+                    android:paddingVertical="@dimen/margin_8dp"
+                    android:text="@string/buy_more"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_size_18sp"
+                    app:icon="@drawable/ic_chevron_right"
+                    app:iconGravity="end"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_buy_more_card_description" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_quote"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_16dp"
+                android:layout_marginVertical="@dimen/margin_16dp"
+                android:background="@drawable/rounded_background_16dp"
+                android:backgroundTint="@color/dust"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_buy_more"
+                tools:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_quote"
+                    style="@style/Text.Header.Tiny"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_16dp"
+                    android:text="@string/quote_example"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/image_view_quote"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_view_quote"
+                    android:layout_width="@dimen/size_48dp"
+                    android:layout_height="@dimen/size_48dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:src="@drawable/ic_quote"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/gray" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

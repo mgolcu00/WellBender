@@ -16,4 +16,8 @@
     <string name="example_author_name">tentengolcu</string>
     <string name="read">Read</string>
     <string name="mark">Mark</string>
+    <string name="buy_more">Buy More</string>
+    <string name="plan_expired">Plan Expried</string>
+    <string name="buy_more_desc">Get back blog access and session credits</string>
+    <string name="quote_example">“It is better to conquer yourself than to win a thousand battles lorem ipsum dolor sit amet vela dust” - Mark Zuckerberg</string>
 </resources>
