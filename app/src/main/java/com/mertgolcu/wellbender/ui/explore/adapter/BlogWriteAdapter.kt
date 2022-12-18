@@ -6,6 +6,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.mertgolcu.wellbender.R
 import com.mertgolcu.wellbender.databinding.ItemBlogWriteBinding
 import com.mertgolcu.wellbender.databinding.ItemEmotionBinding
 import com.mertgolcu.wellbender.domain.model.BlogWrite
@@ -43,7 +45,12 @@ class BlogWriteAdapter : ListAdapter<BlogWrite, BlogWriteAdapter.BlogWriteViewHo
                 textViewReadTime.text = item.formattedReadTime
 
                 imageViewHeader.isVisible = item.isHaveImage
-                item.imageUrl?.let { imageViewHeader.loadImage(it, true) }
+                item.imageUrl?.let {
+                    Glide.with(binding.root.context)
+                        .load(it)
+                        .error(R.drawable.ic_explore)
+                        .into(binding.imageViewHeader)
+                }
 
                 isBookMarked = item.isBookMarked
                 buttonRead.setOnClickListener {

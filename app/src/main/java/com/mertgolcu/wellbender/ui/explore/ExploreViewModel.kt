@@ -50,7 +50,7 @@ class ExploreViewModel @Inject constructor() : BaseViewModel() {
                 publishDate = 1671315995462L,
                 authorName = "mertgolcu",
                 rawText = "Lorem ipsum dolor sit amet",
-                imageUrl = "https://cdn.britannica.com/26/152026-050-41D137DE/Sunshine-leaves-beech-tree.jpg",
+                imageUrl = "https://cdn.pixabay.com/photo/2013/12/17/20/10/bubbles-230014__340.jpg",
                 pages = null,
                 isBookMarked = false
             )
