@@ -26,7 +26,7 @@ import javax.inject.Singleton
  * Created by Mert Gölcü on 16.12.2022.
  */
 
-private val Context.dataStore by preferencesDataStore(name = "user_preferences")
+private val Context.dataStore by preferencesDataStore(name = "user_preferences_v2")
 
 
 @Singleton

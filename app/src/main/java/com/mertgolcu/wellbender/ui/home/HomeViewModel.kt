@@ -8,6 +8,7 @@ import com.mertgolcu.wellbender.domain.model.EmotionMood
 import com.mertgolcu.wellbender.domain.model.card.BaseCardModel
 import com.mertgolcu.wellbender.domain.repository.HomeRepositoryImpl
 import com.mertgolcu.wellbender.domain.repository.IHomeRepository
+import com.mertgolcu.wellbender.ui.main.MainFragmentDirections
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.util.Calendar
@@ -52,6 +53,10 @@ class HomeViewModel @Inject constructor(
     private fun fetchUserData() {
         viewModelScope.launch {
             homeRepository.getUserData().let {
+                if (it.hasStartUp.not()) {
+                    navigate(MainFragmentDirections.actionMainFragmentToOnBoardingFragment())
+                    return@launch
+                }
                 userName.postValue(it.name)
                 avatarUrl.postValue(it.avatarUrl)
             }

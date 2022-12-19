@@ -32,8 +32,8 @@ class HomeRepositoryImpl @Inject constructor(
 
 
     override suspend fun getUserData(): UserPreferences {
-        if (mock)
-            return mockUserData
+       /* if (mock)
+            return mockUserData*/
 
         return dataStoreManager.userPreferencesFlow.first()
     }

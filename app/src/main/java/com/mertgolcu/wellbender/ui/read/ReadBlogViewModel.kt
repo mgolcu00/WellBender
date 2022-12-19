@@ -16,7 +16,7 @@ import javax.inject.Inject
 class ReadBlogViewModel @Inject constructor() : BaseViewModel() {
 
     val title = MutableLiveData<String>()
-    val currentPage = MutableLiveData(1)
+    val currentPage = MutableLiveData(0)
     var totalPage = 0
 
     val cardList = MutableLiveData<List<BlogWriteCard>>()

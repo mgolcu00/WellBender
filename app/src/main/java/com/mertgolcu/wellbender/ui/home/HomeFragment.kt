@@ -52,10 +52,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         viewModel.quote.observe(viewLifecycleOwner) {
             initQuote(it)
         }
+        viewModel.avatarUrl.observe(viewLifecycleOwner) {
+            Glide.with(requireActivity())
+                .load(it)
+                .placeholder(R.drawable.ic_cloud_download)
+                .error(R.drawable.ic_health)
+                .circleCrop()
+                .into(binding.imageViewAvatar)
+        }
     }
 
     private fun initWelcome() {
-        loadAvatar()
+
     }
 
     private fun initEmotion() {
@@ -195,13 +203,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         }
     }
 
-    private fun loadAvatar() {
-        Glide.with(requireActivity())
-            .load(viewModel.avatarUrl.value)
-            .placeholder(R.drawable.ic_person)
-            .circleCrop()
-            .into(binding.imageViewAvatar)
-    }
 
     companion object {
         fun newInstance(): HomeFragment {

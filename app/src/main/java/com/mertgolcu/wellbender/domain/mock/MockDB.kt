@@ -93,6 +93,6 @@ val mockQuote =
 val mockUserData =
     UserPreferences(
         name = "Jhon",
-        hasStartUp = true,
+        hasStartUp = false,
         avatarUrl = "https://avatars2.githubusercontent.com/u/44591905"
     )

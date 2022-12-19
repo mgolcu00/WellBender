@@ -20,4 +20,9 @@
     <string name="plan_expired">Plan Expried</string>
     <string name="buy_more_desc">Get back blog access and session credits</string>
     <string name="quote_example">“It is better to conquer yourself than to win a thousand battles lorem ipsum dolor sit amet vela dust” - Mark Zuckerberg</string>
+    <string name="may_i_know_your_name_so_i_can_address_you">May I know your name so I can call you?</string>
+    <string name="name">Name</string>
+    <string name="welcome_example">Welcome ! There are many variations of passages of Lorem Ipsum available.\nHave Fun!</string>
+    <string name="_continue">Continue</string>
+    <string name="start">Start</string>
 </resources>

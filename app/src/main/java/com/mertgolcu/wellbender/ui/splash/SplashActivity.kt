@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.mertgolcu.wellbender.R
 import com.mertgolcu.wellbender.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 

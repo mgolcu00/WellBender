@@ -50,7 +50,7 @@ class ReadBlogFragment :
             binding.linearIndicator.progress = percent
 
             // view pager
-            binding.viewPagerCards.currentItem = it - 1
+            binding.viewPagerCards.currentItem = it -1
 
             if (it == viewModel.totalPage) {
                 onDoneReading()
