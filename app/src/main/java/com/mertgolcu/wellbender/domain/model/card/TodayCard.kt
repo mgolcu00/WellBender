@@ -8,6 +8,9 @@ import com.mertgolcu.wellbender.ext.getId
  * Created by Mert Gölcü on 18.12.2022.
  */
 
+/**
+@suppress DEPCRATED
+ */
 data class TodayCard(
     val title: String,
     val description: String? = String.toString(),

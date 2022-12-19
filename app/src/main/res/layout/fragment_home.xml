@@ -99,6 +99,7 @@
                     tools:itemCount="8"
                     tools:listitem="@layout/item_emotion" />
 
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -159,10 +160,10 @@
                     android:layout_marginBottom="@dimen/margin_16dp"
                     android:backgroundTint="@color/orange"
                     android:fontFamily="@font/nunito_bold"
+                    android:paddingVertical="@dimen/margin_8dp"
                     android:textAllCaps="false"
                     android:textSize="@dimen/text_size_18sp"
                     app:icon="@drawable/ic_timer"
-                    android:paddingVertical="@dimen/margin_8dp"
                     app:iconGravity="end"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -1,8 +1,10 @@
 package com.mertgolcu.wellbender.ext
 
+import android.annotation.SuppressLint
 import android.text.format.DateFormat
 import com.google.android.material.timepicker.TimeFormat
 import java.sql.Time
+import java.text.SimpleDateFormat
 import java.time.Duration
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -45,20 +47,15 @@ fun Long.formatTimeToMeaning(): String {
     if (m > 0)
         text += "$m min "
     return text
-    return DateTimeFormatter.ofPattern("hh").format(Date(this).toInstant())
-    val formattedTime =
-        DateTimeFormatter.ofLocalizedTime(FormatStyle.FULL).format(Date(this).toInstant())
-    return formattedTime ?: "none"
 }
 
-fun Long.formatDate(format: String = "dd MM yyyy"): String {
-    try {
-//        return DateTimeFormatter.ofPattern(format).format(Date(this).toInstant())
-        val formattedDate =
-            DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).format(Date(this).toInstant())
-        return formattedDate ?: "none"
+@SuppressLint("SimpleDateFormat")
+fun Long.formatDate(pattern: String = "dd MM yyyy"): String {
+    return try {
+        val sdf = SimpleDateFormat(pattern)
+        sdf.format(Date(this))
     } catch (e: Exception) {
-       // e.printStackTrace()
-        return "cannot"
+        e.printStackTrace()
+        "cannot"
     }
 }

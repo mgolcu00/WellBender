@@ -1,7 +1,9 @@
 package com.mertgolcu.wellbender.domain.model
 
 
+import android.text.format.DateUtils
 import com.mertgolcu.wellbender.R
+import com.mertgolcu.wellbender.ext.formatDate
 import com.mertgolcu.wellbender.ext.getId
 
 /**
@@ -34,4 +36,19 @@ data class Emotion(
         const val DEFAULT_ICON_NAME = "default"
         const val DEFAULT_COLOR_NAME = "default"
     }
+}
+
+data class EmotionMood(
+    val id: String,
+    val emotion: Emotion,
+    val date: Long
+) {
+    val prettyDate: String
+        get() {
+            return date.formatDate()
+        }
+    val isToday: Boolean
+        get() {
+            return DateUtils.isToday(date)
+        }
 }

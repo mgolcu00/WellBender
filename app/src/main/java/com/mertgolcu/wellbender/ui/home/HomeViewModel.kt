@@ -1,19 +1,16 @@
 package com.mertgolcu.wellbender.ui.home
 
-import androidx.annotation.DrawableRes
-import androidx.core.graphics.drawable.IconCompat.IconType
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.mertgolcu.wellbender.R
 import com.mertgolcu.wellbender.core.base.BaseViewModel
 import com.mertgolcu.wellbender.domain.model.Emotion
-import com.mertgolcu.wellbender.domain.model.card.TodayCard
-import com.mertgolcu.wellbender.domain.model.card.mockBuyMoreCard
-import com.mertgolcu.wellbender.domain.model.card.mockTodayCard
-import com.mertgolcu.wellbender.domain.store.WellBenderDataStoreManager
+import com.mertgolcu.wellbender.domain.model.EmotionMood
+import com.mertgolcu.wellbender.domain.model.card.BaseCardModel
+import com.mertgolcu.wellbender.domain.repository.HomeRepositoryImpl
+import com.mertgolcu.wellbender.domain.repository.IHomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.util.Calendar
 import javax.inject.Inject
 
 /**
@@ -22,32 +19,92 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val dataStoreManager: WellBenderDataStoreManager
+    private val homeRepository: HomeRepositoryImpl
 ) : BaseViewModel() {
 
     // welcome
-    val userName = MutableLiveData(MOCK_USER_NAME)
+    val userName = MutableLiveData<String>()
     val welcomeMessage = MutableLiveData(MOCK_WELCOME_MESSAGE)
-    val avatarUrl = MutableLiveData(MOCK_AVATAR_URL)
+    val avatarUrl = MutableLiveData<String>()
 
     // emotion emojis
-    val emojiList = MutableLiveData(EMOTION_LIST)
+    val emojiList = MutableLiveData<List<Emotion>>()
+    val todayEmotionMood = MutableLiveData<EmotionMood>()
 
     // today card
-    val todayCard = MutableLiveData(mockTodayCard)
+    val todayCard = MutableLiveData<BaseCardModel>()
 
     // buy more card
-    val buyMoreCard = MutableLiveData(mockBuyMoreCard)
+    val buyMoreCard = MutableLiveData<BaseCardModel>()
+
+    // quote
+    val quote = MutableLiveData<String>()
 
     init {
         fetchUserData()
+        fetchEmotionList()
+        fetchTodayCard()
+        fetchBuyMoreCard()
+        fetchQuote()
     }
+
 
     private fun fetchUserData() {
         viewModelScope.launch {
-            dataStoreManager.userPreferencesFlow.collectLatest {
+            /*   dataStoreManager.userPreferencesFlow.collectLatest {
+                   userName.postValue(it.name)
+                   avatarUrl.postValue(it.avatarUrl)
+               }*/
+            homeRepository.getUserData().let {
                 userName.postValue(it.name)
                 avatarUrl.postValue(it.avatarUrl)
+            }
+        }
+    }
+
+    private fun fetchEmotionList() {
+        viewModelScope.launch {
+            homeRepository.getEmotionList().let {
+                emojiList.postValue(it)
+            }
+        }
+    }
+
+    private fun fetchTodayCard() {
+        viewModelScope.launch {
+            homeRepository.getTodayCard().let {
+                todayCard.postValue(it)
+            }
+        }
+    }
+
+    private fun fetchBuyMoreCard() {
+        viewModelScope.launch {
+            homeRepository.getBuyMoreCard().let {
+                buyMoreCard.postValue(it)
+            }
+        }
+    }
+
+    private fun fetchQuote() {
+        viewModelScope.launch {
+            homeRepository.getQuote().let {
+                quote.postValue(it)
+            }
+        }
+    }
+
+    fun setTodayEmotionMood(emotion: Emotion) {
+        val mood = EmotionMood(
+            id = "1",
+            emotion = emotion,
+            date = Calendar.getInstance().timeInMillis
+        )
+        viewModelScope.launch {
+            homeRepository.setTodayEmotionMood(mood).let {
+                if (it) {
+                    todayEmotionMood.postValue(mood)
+                }
             }
         }
     }
@@ -57,81 +114,8 @@ class HomeViewModel @Inject constructor(
         const val MOCK_USER_NAME = "NO NAME MOCK"
         const val MOCK_WELCOME_MESSAGE = "Good Afternoon,"
         const val MOCK_AVATAR_URL = "https://avatars2.githubusercontent.com/u/44591905"
-        val MOCK_EMOTION_LIST = arrayListOf(
-            MockEmotion("Happy", R.drawable.ic_happy_emoji),
-            MockEmotion("Happy", R.drawable.ic_happy_emoji, color = R.color.deep),
-            MockEmotion("Happy", R.drawable.ic_happy_emoji, color = R.color.peach),
-            MockEmotion("Happy", R.drawable.ic_happy_emoji, color = R.color.orange),
-            MockEmotion("Happy", R.drawable.ic_happy_emoji, color = R.color.iris),
-            MockEmotion("Happy", R.drawable.ic_happy_emoji, color = R.color.onyx),
-            MockEmotion("Happy", R.drawable.ic_happy_emoji),
-        )
-        val MOCK_TODAY_CARD = TodayCard(
-            title = "Read Today",
-            description = "Let’s open up to the things that matter the most",
-            buttonText = "Read Now",
-            imageUrl = "ic_health"
-        )
-        val MOCK_BUY_MORE = TodayCard(
-            title = "Plan Expired",
-            description = "Get back blog access and session credits",
-            buttonText = "Buy More",
-            imageUrl = "ic_cloud_download"
-        )
-        val EMOTION_LIST = arrayListOf(
-            Emotion(
-                id = "1",
-                title = "Happy",
-                iconUrl = "ic_happy_emoji",
-                color = "orange",
-                iconTint = "light"
-            ),
-            Emotion(
-                id = "2",
-                title = "Calm",
-                iconUrl = "https://img.icons8.com/emoji/48/null/relieved-face.png",
-                color = "#007FAC",
-                iconTint = "#ff00ff"
-            ),
-            Emotion(
-                id = "3",
-                title = "Angry",
-                iconUrl = "https://img.icons8.com/emoji/48/null/angry-face-emoji--v2.png",
-                color = "purple_peach"
-            ),
-            Emotion(
-                id = "4",
-                title = "Sad",
-                iconUrl = "https://img.icons8.com/emoji/48/null/weary-face.png",
-                color = "#181D31"
-            ),
-            Emotion(
-                id = "5",
-                title = "Manic",
-                iconUrl = "https://img.icons8.com/emoji/48/null/clincking-glasses.png",
-                color = "deep"
-            ),
-            Emotion(
-                id = "6",
-                title = "Social",
-                iconUrl = "ic_meetup",
-                color = "light_orange"
-            ),
-        )
+
+        const val MOCK_QUOTE =
+            "“It is better to conquer yourself than to win a thousand battles lorem ipsum dolor sit amet vela dust” - Mark Zuckerberg"
     }
 }
-
-data class MockEmotion(
-    val text: String,
-    val image: Int,
-    val imageUrl: String? = null,
-    val color: Int? = R.color.purple_peach
-)
-
-data class MockTodayCard(
-    val title: String,
-    val description: String,
-    val buttonText: String,
-    val imageUrl: String? = null,
-    val imageId: Int = R.drawable.ic_meetup
-)

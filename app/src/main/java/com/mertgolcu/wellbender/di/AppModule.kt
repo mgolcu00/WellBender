@@ -1,5 +1,7 @@
 package com.mertgolcu.wellbender.di
 
+import com.mertgolcu.wellbender.domain.repository.HomeRepositoryImpl
+import com.mertgolcu.wellbender.domain.store.WellBenderDataStoreManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,6 +25,12 @@ object AppModule {
     @Singleton
     fun provideApplicationScope() =
         CoroutineScope(SupervisorJob()) // Learn This specially "Coroutine"
+
+    @Singleton
+    @Provides
+    fun provideHomeRepository(
+        dataStoreManager: WellBenderDataStoreManager
+    ) = HomeRepositoryImpl(dataStoreManager)
 }
 
 @Retention(AnnotationRetention.RUNTIME)
