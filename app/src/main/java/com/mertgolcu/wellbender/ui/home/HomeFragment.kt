@@ -47,7 +47,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             initTodayCard(it)
         }
         viewModel.buyMoreCard.observe(viewLifecycleOwner) {
-            initBuyMoreCard(it)
+            initBuyMoreCard(null)
         }
         viewModel.quote.observe(viewLifecycleOwner) {
             initQuote(it)
@@ -64,8 +64,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
     private fun initTodayCard(todayCard: BaseCardModel? = null) {
 
+        if (todayCard == null)
+            binding.layoutTodayCard.isVisible = false
         todayCard?.let {
-
+            binding.layoutTodayCard.isVisible = true
             // background
             binding.layoutTodayCard.backgroundTintList = ColorStateList.valueOf(
                 it.getBackgroundTintColorRaw(requireContext())
@@ -120,7 +122,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     }
 
     private fun initBuyMoreCard(buyMoreCard: BaseCardModel? = null) {
+        if (buyMoreCard == null)
+            binding.layoutBuyMore.isVisible = false
         buyMoreCard?.let {
+            binding.layoutBuyMore.isVisible = true
             // background
             binding.layoutBuyMore.backgroundTintList = ColorStateList.valueOf(
                 it.getBackgroundTintColorRaw(requireContext())
@@ -196,5 +201,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             .placeholder(R.drawable.ic_person)
             .circleCrop()
             .into(binding.imageViewAvatar)
+    }
+
+    companion object {
+        fun newInstance(): HomeFragment {
+            val fragment = HomeFragment()
+            return fragment
+        }
     }
 }

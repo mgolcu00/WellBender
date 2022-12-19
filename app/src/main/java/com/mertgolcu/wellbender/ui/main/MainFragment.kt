@@ -52,9 +52,12 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
     }
 
     private fun initAdapter() {
-        mainFragmentAdapter = MainFragmentAdapter(requireActivity())
+        mainFragmentAdapter = MainFragmentAdapter(
+            requireActivity()
+        )
         binding.viewPager.adapter = mainFragmentAdapter
-        binding.viewPager.isUserInputEnabled=false
+        binding.viewPager.isUserInputEnabled = false
+        // binding.viewPager.isSaveEnabled=false
         binding.viewPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
@@ -78,6 +81,11 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
                 }
             }
         })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.viewPager.adapter = null
     }
 
     companion object {

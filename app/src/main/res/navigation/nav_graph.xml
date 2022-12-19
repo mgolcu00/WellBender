@@ -9,5 +9,19 @@
         android:id="@+id/mainFragment"
         android:name="com.mertgolcu.wellbender.ui.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_readBlogFragment"
+            app:destination="@id/readBlogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/readBlogFragment"
+        android:name="com.mertgolcu.wellbender.ui.read.ReadBlogFragment"
+        android:label="fragment_read_blog"
+        tools:layout="@layout/fragment_read_blog" >
+
+        <argument
+            android:name="blog_write_id"
+            app:argType="string" />
+    </fragment>
 </navigation>

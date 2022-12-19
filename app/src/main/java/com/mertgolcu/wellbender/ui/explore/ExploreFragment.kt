@@ -9,6 +9,8 @@ import com.mertgolcu.wellbender.databinding.FragmentExploreBinding
 import com.mertgolcu.wellbender.databinding.FragmentHistoryBinding
 import com.mertgolcu.wellbender.ui.explore.adapter.BlogWriteAdapter
 import com.mertgolcu.wellbender.ui.history.HistoryViewModel
+import com.mertgolcu.wellbender.ui.main.MainFragment
+import com.mertgolcu.wellbender.ui.main.MainFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -42,11 +44,20 @@ class ExploreFragment :
 
         blogWriteAdapter?.onClickRead = {
             // todo : on click read
+            viewModel.navigate(MainFragmentDirections.actionMainFragmentToReadBlogFragment("0"))
         }
         blogWriteAdapter?.onClickBookmark = { item, mark ->
             // todo : on click book mark
         }
 
         binding.recyclerViewWrites.adapter = blogWriteAdapter
+    }
+
+    companion object {
+        fun newInstance(): ExploreFragment {
+            val fragment = ExploreFragment()
+
+            return fragment
+        }
     }
 }

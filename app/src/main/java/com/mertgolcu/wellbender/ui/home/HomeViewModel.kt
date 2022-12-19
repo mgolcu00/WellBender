@@ -51,10 +51,6 @@ class HomeViewModel @Inject constructor(
 
     private fun fetchUserData() {
         viewModelScope.launch {
-            /*   dataStoreManager.userPreferencesFlow.collectLatest {
-                   userName.postValue(it.name)
-                   avatarUrl.postValue(it.avatarUrl)
-               }*/
             homeRepository.getUserData().let {
                 userName.postValue(it.name)
                 avatarUrl.postValue(it.avatarUrl)
