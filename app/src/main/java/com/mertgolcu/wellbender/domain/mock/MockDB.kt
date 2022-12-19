@@ -46,44 +46,73 @@ val mockTodayCard = BaseCardModel(
     it.imageTintColorId = null
 }
 
+/*
+<color name="iris">#4754F0</color>
+    <color name="purple_peach">#AE94FB</color>
+    <color name="peach">#FFCCB7</color>
+    <color name="onyx">#29303E</color>
+    <color name="deep">#0E0E2C</color>
+    <color name="gray">#BAB9D0</color>
+    <color name="dust">#E0DFE9</color>
+    <color name="light">#F9F9F9</color>
+    <color name="whitish">#FBFBFB</color>
+
+
+    <color name="orange">#FE8235</color>
+    <color name="soft_orange">#F09E54</color>
+    <color name="light_orange">#FEF3E7</color>
+    <color name="dark_brown">#573926</color>
+    <color name="night_green">#55A06F</color>
+    <color name="soft_green">#99D9AF</color>
+ */
 val mockEmotionList = listOf(
     Emotion(
         id = "1",
         title = "Happy",
-        iconUrl = "ic_happy_emoji",
-        color = "orange",
-        iconTint = "light"
+        iconUrl = "ic_emoji_happy",
+        color = "orange"
     ),
     Emotion(
         id = "2",
-        title = "Calm",
-        iconUrl = "https://img.icons8.com/emoji/48/null/relieved-face.png",
-        color = "#007FAC",
-        iconTint = "#ff00ff"
+        title = "Sad",
+        iconUrl = "ic_emoji_sad",
+        color = "dark_brown"
     ),
     Emotion(
         id = "3",
-        title = "Angry",
-        iconUrl = "https://img.icons8.com/emoji/48/null/angry-face-emoji--v2.png",
-        color = "purple_peach"
+        title = "Anxious",
+        iconUrl = "ic_emoji_anxious",
+        color = "night_green",
     ),
     Emotion(
         id = "4",
-        title = "Sad",
-        iconUrl = "https://img.icons8.com/emoji/48/null/weary-face.png",
-        color = "#181D31"
+        title = "Angry",
+        iconUrl = "ic_emoji_angry",
+        color = "peach",
     ),
     Emotion(
         id = "5",
-        title = "Manic",
-        iconUrl = "https://img.icons8.com/emoji/48/null/clincking-glasses.png",
-        color = "deep"
+        title = "Dizzy",
+        iconUrl = "ic_emoji_dizzy",
+        color = "soft_orange",
     ),
     Emotion(
         id = "6",
-        title = "Social",
-        iconUrl = "ic_meetup",
-        color = "light_orange"
+        title = "Love",
+        iconUrl = "ic_emoji_love",
+        color = "soft_green",
+    ),
+    Emotion(
+        id = "7",
+        title = "Notr",
+        iconUrl = "ic_emoji_notr",
+        color = "dust",
+    ),
+    Emotion(
+        id = "8",
+        title = "Tired",
+        iconUrl = "ic_emoji_tired",
+        color = "purple_peach",
     ),
 )
 

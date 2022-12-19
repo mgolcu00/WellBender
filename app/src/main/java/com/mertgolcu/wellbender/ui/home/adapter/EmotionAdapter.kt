@@ -37,7 +37,7 @@ class EmotionAdapter : ListAdapter<Emotion, EmotionAdapter.EmotionViewHolder>(
     var onClickItem: ((item: Emotion) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmotionViewHolder {
-        val binding = ItemEmotionBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemEmotionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return EmotionViewHolder(binding)
     }
 
@@ -91,7 +91,8 @@ class EmotionAdapter : ListAdapter<Emotion, EmotionAdapter.EmotionViewHolder>(
         }
 
         private fun loadImageFromLocal(id: Int) {
-            binding.imageViewEmotion.loadImageFromLocal(id, true)
+            //  binding.imageViewEmotion.loadImageFromLocal(id, true)
+            binding.imageViewEmotion.setImageResource(id)
         }
 
         private fun loadColor(@ColorRes colorId: Int) {

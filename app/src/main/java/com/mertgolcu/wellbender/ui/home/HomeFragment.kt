@@ -47,7 +47,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             initTodayCard(it)
         }
         viewModel.buyMoreCard.observe(viewLifecycleOwner) {
-            initBuyMoreCard(null)
+            initBuyMoreCard(it)
         }
         viewModel.quote.observe(viewLifecycleOwner) {
             initQuote(it)
