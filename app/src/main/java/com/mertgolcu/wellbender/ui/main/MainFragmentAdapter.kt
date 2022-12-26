@@ -10,6 +10,7 @@ import com.mertgolcu.wellbender.ui.explore.ExploreViewModel
 import com.mertgolcu.wellbender.ui.fitness.FitnessFragment
 import com.mertgolcu.wellbender.ui.history.HistoryFragment
 import com.mertgolcu.wellbender.ui.home.HomeFragment
+import com.mertgolcu.wellbender.ui.sounds.SoundsFragment
 
 /**
  * Created by Mert Gölcü on 15.12.2022.
@@ -22,11 +23,11 @@ class MainFragmentAdapter(
 
     private val homeFragment = HomeFragment.newInstance()
     private val exploreFragment = ExploreFragment.newInstance()
-
+    private val soundsFragment = SoundsFragment()
     private val fragmentList = arrayListOf(
         homeFragment,
         exploreFragment,
-        FitnessFragment(),
+        soundsFragment,// fitnessFragment
         HistoryFragment()
     )
 

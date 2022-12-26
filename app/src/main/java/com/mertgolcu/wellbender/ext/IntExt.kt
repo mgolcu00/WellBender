@@ -1,6 +1,7 @@
 package com.mertgolcu.wellbender.ext
 
 import android.annotation.SuppressLint
+import android.content.res.Resources.getSystem
 import android.text.format.DateFormat
 import com.google.android.material.timepicker.TimeFormat
 import java.sql.Time
@@ -59,3 +60,7 @@ fun Long.formatDate(pattern: String = "dd MM yyyy"): String {
         "cannot"
     }
 }
+
+
+val Int.dp: Int get() = (this / getSystem().displayMetrics.density).toInt()
+val Int.px: Int get() = (this * getSystem().displayMetrics.density).toInt()
