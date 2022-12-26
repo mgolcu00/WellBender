@@ -68,9 +68,7 @@ class SoundAdapter : ListAdapter<Sound, SoundAdapter.SoundViewHolder>(
                     params.weight = 1F
                     params.marginStart = 4.px
                     textView.layoutParams = params
-
                     textView.maxLines=1
-
                     textView.text = it.name
                     textView.background = ResourcesCompat.getDrawable(
                         binding.root.resources,
@@ -78,7 +76,7 @@ class SoundAdapter : ListAdapter<Sound, SoundAdapter.SoundViewHolder>(
                         binding.root.context.theme
                     )
 
-                    textView.setPadding(4.px)
+                    textView.setPadding(6.px)
 
 
                     textView.backgroundTintList = ColorStateList.valueOf(
