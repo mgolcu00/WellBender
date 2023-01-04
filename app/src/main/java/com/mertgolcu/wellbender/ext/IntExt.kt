@@ -31,36 +31,5 @@ inline fun <reified T : Class<*>> T.getId(resourceName: String): Int {
     }
 }
 
-fun Long.formatTimeToMeaning(): String {
-    var text = ""
-/*    val time = Time(this)
-
-    text += "${time.hours} h"
-    text += "${time.minutes} min"
-    text += "${time.seconds} sec"
-*/
-    val duration = Duration.ZERO.plusSeconds(this)
-    var h = duration.seconds / 3600
-    var m = (duration.seconds % 3600) / 60 //(s % 3600) / 60
-
-    if (h > 0)
-        text += "$h h "
-    if (m > 0)
-        text += "$m min "
-    return text
-}
-
-@SuppressLint("SimpleDateFormat")
-fun Long.formatDate(pattern: String = "dd MM yyyy"): String {
-    return try {
-        val sdf = SimpleDateFormat(pattern)
-        sdf.format(Date(this))
-    } catch (e: Exception) {
-        e.printStackTrace()
-        "cannot"
-    }
-}
-
-
 val Int.dp: Int get() = (this / getSystem().displayMetrics.density).toInt()
 val Int.px: Int get() = (this * getSystem().displayMetrics.density).toInt()

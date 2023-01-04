@@ -2,7 +2,7 @@ package com.mertgolcu.wellbender.domain.model
 
 import android.webkit.URLUtil
 import com.mertgolcu.wellbender.ext.formatDate
-import com.mertgolcu.wellbender.ext.formatTimeToMeaning
+import com.mertgolcu.wellbender.ext.formatSecondToMeaning
 
 /**
  * Created by Mert Gölcü on 18.12.2022.
@@ -22,7 +22,7 @@ data class BlogWrite(
 ) {
     val formattedReadTime: String
         get() {
-            return readTime?.formatTimeToMeaning().toString()
+            return readTime?.formatSecondToMeaning().toString()
         }
 
     val formattedPublishDate: String

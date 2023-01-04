@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mertgolcu.wellbender.R
+import com.mertgolcu.wellbender.core.binding.loadCircleImage
 import com.mertgolcu.wellbender.core.binding.loadImage
 import com.mertgolcu.wellbender.databinding.ItemSoundHorizontalBinding
 import com.mertgolcu.wellbender.domain.model.BlogWrite
@@ -37,19 +38,23 @@ class SoundAdapter : ListAdapter<Sound, SoundAdapter.SoundViewHolder>(
     }
 ) {
 
-    var onClickPlay: ((item: BlogWrite) -> Unit)? = null
+    var onClickPlay: ((item: Sound) -> Unit)? = null
 
     inner class SoundViewHolder(private val binding: ItemSoundHorizontalBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Sound) {
             binding.apply {
-                loadImage(imageViewSoundImage, item.imageUrl)
+                loadCircleImage(imageViewSoundImage, item.imageUrl)
 
                 textViewTitle.text = item.title
                 textViewTime.text = item.formattedDuration
 
                 createTags(item)
+
+                imageButtonPlay.setOnClickListener {
+                    onClickPlay?.invoke(item)
+                }
             }
         }
 
@@ -57,6 +62,7 @@ class SoundAdapter : ListAdapter<Sound, SoundAdapter.SoundViewHolder>(
             val tags = item.tags
             tags?.let { list ->
                 if (list.isNotEmpty()) binding.layoutTags.isVisible = true
+                binding.layoutTags.weightSum = list.size.toFloat()
                 list.forEach {
                     val textView = TextView(
                         ContextThemeWrapper(binding.root.context, R.style.Text_Body)
@@ -68,7 +74,7 @@ class SoundAdapter : ListAdapter<Sound, SoundAdapter.SoundViewHolder>(
                     params.weight = 1F
                     params.marginStart = 4.px
                     textView.layoutParams = params
-                    textView.maxLines=1
+                    textView.maxLines = 1
                     textView.text = it.name
                     textView.background = ResourcesCompat.getDrawable(
                         binding.root.resources,

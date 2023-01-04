@@ -35,23 +35,18 @@ class SoundsViewModel @Inject constructor() : BaseViewModel() {
                 ),
                 Sound(
                     id = "2",
-                    title = "Fire Cracker Sound",
-                    imageUrl = "https://picsum.photos/200",
-                    duration = 600L,
-                    soundUrl = "https://cdn.pixabay.com/download/audio/2022/01/19/audio_0f25c0e66d.mp3?filename=ambience-sounds-8-15136.mp3",
+                    title = "The Forest",
+                    imageUrl = "https://images.pexels.com/photos/338936/pexels-photo-338936.jpeg?cs=srgb&dl=pexels-nejc-ko%C5%A1ir-338936.jpg&fm=jpg&w=1280&h=743&_gl=1*16cajc0*_ga*MjA1MjIxMTc3Ny4xNjY4MTg3ODYw*_ga_8JE65Q40S6*MTY3MjIyNTE0MS45LjEuMTY3MjIyNTE1Mi4wLjAuMA..",
+                    duration = 54L,
+                    soundUrl = "https://bigsoundbank.com/UPLOAD/mp3/0100.mp3",
                     tags = listOf(
                         SoundTag(
                             id = "1",
-                            name = "Chill",
+                            name = "Birds",
                             color = "orange"
                         ),
                         SoundTag(
                             id = "2",
-                            name = "Nature",
-                            color = "gray"
-                        ),
-                        SoundTag(
-                            id = "3",
                             name = "Nature",
                         )
                     )

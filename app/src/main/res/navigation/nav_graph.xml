@@ -9,19 +9,22 @@
         android:id="@+id/mainFragment"
         android:name="com.mertgolcu.wellbender.ui.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_readBlogFragment"
             app:destination="@id/readBlogFragment" />
         <action
             android:id="@+id/action_mainFragment_to_onBoardingFragment"
             app:destination="@id/onBoardingFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_soundListenFragment"
+            app:destination="@id/soundListenFragment" />
     </fragment>
     <fragment
         android:id="@+id/readBlogFragment"
         android:name="com.mertgolcu.wellbender.ui.read.ReadBlogFragment"
         android:label="fragment_read_blog"
-        tools:layout="@layout/fragment_read_blog" >
+        tools:layout="@layout/fragment_read_blog">
 
         <argument
             android:name="blog_write_id"
@@ -32,4 +35,13 @@
         android:name="com.mertgolcu.wellbender.ui.onboarding.OnBoardingFragment"
         android:label="fragment_on_borading"
         tools:layout="@layout/fragment_on_borading" />
+    <fragment
+        android:id="@+id/soundListenFragment"
+        android:name="com.mertgolcu.wellbender.ui.sounds.listen.SoundListenFragment"
+        android:label="fragment_listen_sound"
+        tools:layout="@layout/fragment_listen_sound">
+        <argument
+            android:name="sound_id"
+            app:argType="string" />
+    </fragment>
 </navigation>

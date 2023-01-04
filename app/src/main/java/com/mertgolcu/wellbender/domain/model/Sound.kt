@@ -1,7 +1,7 @@
 package com.mertgolcu.wellbender.domain.model
 
 import com.mertgolcu.wellbender.R
-import com.mertgolcu.wellbender.ext.formatTimeToMeaning
+import com.mertgolcu.wellbender.ext.formatSecondToMeaning
 import com.mertgolcu.wellbender.ext.getId
 
 /**
@@ -18,7 +18,7 @@ data class Sound(
 ) {
     val formattedDuration: String
         get() {
-            return duration.formatTimeToMeaning()
+            return duration.formatSecondToMeaning()
         }
 }
 

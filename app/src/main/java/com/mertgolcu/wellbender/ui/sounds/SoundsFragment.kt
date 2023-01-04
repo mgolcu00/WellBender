@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mertgolcu.wellbender.R
 import com.mertgolcu.wellbender.core.base.BaseFragment
 import com.mertgolcu.wellbender.databinding.FragmentSoundsBinding
+import com.mertgolcu.wellbender.ui.main.MainFragmentDirections
 import com.mertgolcu.wellbender.ui.sounds.adapter.SoundAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,6 +38,12 @@ class SoundsFragment :
 
     private fun initAdapter() {
         soundAdapter = SoundAdapter()
+        soundAdapter?.onClickPlay = {
+            viewModel.navigate(
+                MainFragmentDirections
+                    .actionMainFragmentToSoundListenFragment(it.id)
+            )
+        }
         binding.recyclerViewSounds.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewSounds.adapter = soundAdapter
     }
