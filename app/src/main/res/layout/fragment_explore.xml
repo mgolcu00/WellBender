@@ -138,6 +138,28 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edit_text_search"
+            style="@style/Text.Header.Tiny"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:background="@drawable/rounded_background_8dp"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="@dimen/margin_4dp"
+            android:inputType="text"
+            android:imeOptions="actionSearch"
+            android:drawableTint="@color/gray"
+            android:hint="@string/search_blogs"
+            android:maxLength="40"
+            android:maxLines="1"
+            android:padding="@dimen/margin_16dp"
+            android:text="@={viewModel.query}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <View
             android:id="@+id/view_parent_line"
             android:layout_width="match_parent"
@@ -146,7 +168,8 @@
             android:layout_marginTop="@dimen/margin_8dp"
             android:background="@color/dust"
             android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/card_upcoming" />
+            app:layout_constraintTop_toBottomOf="@id/edit_text_search" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_writes"

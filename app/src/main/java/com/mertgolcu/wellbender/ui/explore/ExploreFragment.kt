@@ -2,6 +2,7 @@ package com.mertgolcu.wellbender.ui.explore
 
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mertgolcu.wellbender.R
 import com.mertgolcu.wellbender.core.base.BaseFragment
@@ -30,6 +31,17 @@ class ExploreFragment :
 
         initObservers()
         initBlogWritesAdapter()
+        initSerachBar()
+    }
+
+    private fun initSerachBar() {
+        binding.editTextSearch.setOnEditorActionListener { textView, i, keyEvent ->
+            if (i == EditorInfo.IME_ACTION_SEARCH) {
+                viewModel.query.value?.let { viewModel.searchBlogs(it) }
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
     }
 
     private fun initObservers() {
@@ -44,7 +56,7 @@ class ExploreFragment :
 
         blogWriteAdapter?.onClickRead = {
             // todo : on click read
-            viewModel.navigate(MainFragmentDirections.actionMainFragmentToReadBlogFragment("0"))
+            viewModel.goToBlogWrite(it)
         }
         blogWriteAdapter?.onClickBookmark = { item, mark ->
             // todo : on click book mark

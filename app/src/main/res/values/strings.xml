@@ -25,4 +25,6 @@
     <string name="welcome_example">Welcome ! There are many variations of passages of Lorem Ipsum available.\nHave Fun!</string>
     <string name="_continue">Continue</string>
     <string name="start">Start</string>
+    <string name="search">Search</string>
+    <string name="search_blogs">Search Blog</string>
 </resources>

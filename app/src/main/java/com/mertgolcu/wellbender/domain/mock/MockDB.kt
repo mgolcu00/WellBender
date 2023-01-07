@@ -2,6 +2,10 @@ package com.mertgolcu.wellbender.domain.mock
 
 import com.mertgolcu.wellbender.R
 import com.mertgolcu.wellbender.domain.model.Emotion
+import com.mertgolcu.wellbender.domain.model.MOCK_BLOG_WRITE_1
+import com.mertgolcu.wellbender.domain.model.MOCK_BLOG_WRITE_2
+import com.mertgolcu.wellbender.domain.model.MOCK_BLOG_WRITE_3
+import com.mertgolcu.wellbender.domain.model.MOCK_BLOG_WRITE_4
 import com.mertgolcu.wellbender.domain.model.UserPreferences
 import com.mertgolcu.wellbender.domain.model.card.BaseCardModel
 import com.mertgolcu.wellbender.domain.model.card.CardButton
@@ -135,4 +139,11 @@ val newMockCardList = arrayListOf(
     MOCK_NEW_CARD_MODEL_2,
     MOCK_NEW_CARD_MODEL_3,
     MOCK_NEW_CARD_MODEL_4
+)
+
+val mockBlogWriteList = arrayListOf(
+    MOCK_BLOG_WRITE_1,
+    MOCK_BLOG_WRITE_2,
+    MOCK_BLOG_WRITE_3,
+    MOCK_BLOG_WRITE_4,
 )

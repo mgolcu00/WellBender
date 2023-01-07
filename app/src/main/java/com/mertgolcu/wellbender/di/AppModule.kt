@@ -1,6 +1,8 @@
 package com.mertgolcu.wellbender.di
 
+import com.mertgolcu.wellbender.domain.repository.BlogRepositoryImpl
 import com.mertgolcu.wellbender.domain.repository.HomeRepositoryImpl
+import com.mertgolcu.wellbender.domain.repository.IBlogRepository
 import com.mertgolcu.wellbender.domain.store.WellBenderDataStoreManager
 import dagger.Module
 import dagger.Provides
@@ -31,6 +33,10 @@ object AppModule {
     fun provideHomeRepository(
         dataStoreManager: WellBenderDataStoreManager
     ) = HomeRepositoryImpl(dataStoreManager)
+
+    @Singleton
+    @Provides
+    fun provideBlogRepository(): IBlogRepository = BlogRepositoryImpl()
 }
 
 @Retention(AnnotationRetention.RUNTIME)
