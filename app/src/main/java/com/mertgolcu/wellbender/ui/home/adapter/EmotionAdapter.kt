@@ -51,78 +51,8 @@ class EmotionAdapter : ListAdapter<Emotion, EmotionAdapter.EmotionViewHolder>(
     inner class EmotionViewHolder(private val binding: ItemEmotionBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-
         fun bind(item: Emotion) {
-            // icon logic
-            item.iconUrl?.let {
-                if (URLUtil.isValidUrl(it)) {
-                    loadImage(it)
-                } else {
-                    loadImageFromLocal(item.iconId)
-                }
-            }
-            // icon tint logic
-            item.iconTint?.let {
-                if (it[0] == '#') {
-                    setIconTintFromHex(item.iconTint)
-                } else {
-                    setIconTintFromLocal(item.iconTintId)
-                }
-            }
-            // color logic
-            item.color?.let {
-                if (it[0] == '#') {
-                    loadColorWithHex(item.color)
-                } else {
-                    loadColor(item.colorId)
-                }
-            }
-            item.title.let {
-                binding.textViewEmotionTitle.text = it
-            }
-            binding.root.setOnClickListener {
-                onClickItem?.invoke(item)
-            }
-        }
-
-
-        private fun loadImage(url: String) {
-            binding.imageViewEmotion.loadImage(url, true)
-        }
-
-        private fun loadImageFromLocal(id: Int) {
-            //  binding.imageViewEmotion.loadImageFromLocal(id, true)
-            binding.imageViewEmotion.setImageResource(id)
-        }
-
-        private fun loadColor(@ColorRes colorId: Int) {
-            binding.layoutCard.backgroundTintList = ColorStateList.valueOf(
-                ContextCompat.getColor(
-                    binding.root.context,
-                    colorId
-                )
-            )
-        }
-
-        private fun loadColorWithHex(color: String) {
-            binding.layoutCard.backgroundTintList = ColorStateList.valueOf(
-                Color.parseColor(color)
-            )
-        }
-
-        private fun setIconTintFromHex(color: String) {
-            binding.imageViewEmotion.imageTintList = ColorStateList.valueOf(
-                Color.parseColor(color)
-            )
-        }
-
-        private fun setIconTintFromLocal(id: Int) {
-            binding.imageViewEmotion.imageTintList = ColorStateList.valueOf(
-                ContextCompat.getColor(
-                    binding.root.context,
-                    id
-                )
-            )
+            EmotionHelper(item, binding).bind(onClickItem)
         }
     }
 

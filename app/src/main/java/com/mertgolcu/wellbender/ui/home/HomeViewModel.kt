@@ -1,11 +1,13 @@
 package com.mertgolcu.wellbender.ui.home
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.mertgolcu.wellbender.core.base.BaseViewModel
 import com.mertgolcu.wellbender.domain.model.Emotion
 import com.mertgolcu.wellbender.domain.model.EmotionMood
 import com.mertgolcu.wellbender.domain.model.card.BaseCardModel
+import com.mertgolcu.wellbender.domain.model.card.NewCardModel
 import com.mertgolcu.wellbender.domain.repository.HomeRepositoryImpl
 import com.mertgolcu.wellbender.domain.repository.IHomeRepository
 import com.mertgolcu.wellbender.ui.main.MainFragmentDirections
@@ -25,12 +27,15 @@ class HomeViewModel @Inject constructor(
 
     // welcome
     val userName = MutableLiveData<String>()
-    val welcomeMessage = MutableLiveData(MOCK_WELCOME_MESSAGE)
+    val welcomeMessage = MutableLiveData(createWelcomeMessage())
     val avatarUrl = MutableLiveData<String>()
 
     // emotion emojis
     val emojiList = MutableLiveData<List<Emotion>>()
     val todayEmotionMood = MutableLiveData<EmotionMood>()
+
+    // cards
+    val cardList = MutableLiveData<List<NewCardModel>>()
 
     // today card
     val todayCard = MutableLiveData<BaseCardModel>()
@@ -44,11 +49,11 @@ class HomeViewModel @Inject constructor(
     init {
         fetchUserData()
         fetchEmotionList()
+        fetchCardList()
         fetchTodayCard()
         fetchBuyMoreCard()
         fetchQuote()
     }
-
 
     private fun fetchUserData() {
         viewModelScope.launch {
@@ -67,6 +72,14 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             homeRepository.getEmotionList().let {
                 emojiList.postValue(it)
+            }
+        }
+    }
+
+    private fun fetchCardList() {
+        viewModelScope.launch {
+            homeRepository.getCardList().let {
+                cardList.postValue(it)
             }
         }
     }
@@ -107,6 +120,16 @@ class HomeViewModel @Inject constructor(
                     todayEmotionMood.postValue(mood)
                 }
             }
+        }
+    }
+
+    private fun createWelcomeMessage(): String {
+        val h = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+        Log.d("HOME_VIEW_MODEL", "hour : $h")
+        return if (h > 12) {
+            "Good Afternoon,"
+        } else {
+            "Good Morning,"
         }
     }
 

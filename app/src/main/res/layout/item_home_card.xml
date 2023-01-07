@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_16dp"
+    android:layout_marginVertical="@dimen/margin_8dp"
+    android:layout_marginEnd="@dimen/margin_16dp"
+    android:background="@drawable/rounded_background_16dp"
+    android:backgroundTint="@color/light_orange">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_view_card_title"
+        style="@style/Text.Header.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:textColor="@color/dark_brown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/read_today" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_view_card_description"
+        style="@style/Text.Body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:layout_marginEnd="@dimen/margin_8dp"
+        android:textColor="@color/dark_brown"
+        app:layout_constraintEnd_toStartOf="@id/image_view_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_card_title"
+        tools:text="@string/read_today_desc" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_view_card"
+        android:layout_width="@dimen/size_128dp"
+        android:layout_height="@dimen/size_128dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:src="@drawable/ic_meetup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:layout_marginBottom="@dimen/margin_16dp"
+        android:backgroundTint="@color/orange"
+        android:fontFamily="@font/nunito_bold"
+        android:paddingVertical="@dimen/margin_8dp"
+        android:textAllCaps="false"
+        android:textSize="@dimen/text_size_18sp"
+        app:iconGravity="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_card_description"
+        tools:icon="@drawable/ic_timer"
+        tools:text="@string/read_now" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

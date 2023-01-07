@@ -5,6 +5,7 @@ import com.mertgolcu.wellbender.domain.model.Emotion
 import com.mertgolcu.wellbender.domain.model.EmotionMood
 import com.mertgolcu.wellbender.domain.model.UserPreferences
 import com.mertgolcu.wellbender.domain.model.card.BaseCardModel
+import com.mertgolcu.wellbender.domain.model.card.NewCardModel
 import com.mertgolcu.wellbender.domain.store.WellBenderDataStoreManager
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
@@ -19,6 +20,7 @@ interface IHomeRepository {
     suspend fun getUserData(): UserPreferences
     suspend fun getEmotionList(): List<Emotion>
     suspend fun setTodayEmotionMood(emotionMood: EmotionMood): Boolean
+    suspend fun getCardList(): List<NewCardModel>
     suspend fun getTodayCard(): BaseCardModel
     suspend fun getBuyMoreCard(): BaseCardModel
     suspend fun getQuote(): String
@@ -32,8 +34,8 @@ class HomeRepositoryImpl @Inject constructor(
 
 
     override suspend fun getUserData(): UserPreferences {
-       /* if (mock)
-            return mockUserData*/
+        /* if (mock)
+             return mockUserData*/
 
         return dataStoreManager.userPreferencesFlow.first()
     }
@@ -41,6 +43,12 @@ class HomeRepositoryImpl @Inject constructor(
     override suspend fun getEmotionList(): List<Emotion> {
         if (mock)
             return mockEmotionList
+        return listOf()
+    }
+
+    override suspend fun getCardList(): List<NewCardModel> {
+        if (mock)
+            return newMockCardList
         return listOf()
     }
 

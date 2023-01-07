@@ -5,6 +5,10 @@ import com.mertgolcu.wellbender.domain.model.Emotion
 import com.mertgolcu.wellbender.domain.model.UserPreferences
 import com.mertgolcu.wellbender.domain.model.card.BaseCardModel
 import com.mertgolcu.wellbender.domain.model.card.CardButton
+import com.mertgolcu.wellbender.domain.model.card.MOCK_NEW_CARD_MODEL_1
+import com.mertgolcu.wellbender.domain.model.card.MOCK_NEW_CARD_MODEL_2
+import com.mertgolcu.wellbender.domain.model.card.MOCK_NEW_CARD_MODEL_3
+import com.mertgolcu.wellbender.domain.model.card.MOCK_NEW_CARD_MODEL_4
 
 /**
  * Created by Mert Gölcü on 19.12.2022.
@@ -125,3 +129,10 @@ val mockUserData =
         hasStartUp = false,
         avatarUrl = "https://avatars2.githubusercontent.com/u/44591905"
     )
+
+val newMockCardList = arrayListOf(
+    MOCK_NEW_CARD_MODEL_1,
+    MOCK_NEW_CARD_MODEL_2,
+    MOCK_NEW_CARD_MODEL_3,
+    MOCK_NEW_CARD_MODEL_4
+)

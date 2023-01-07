@@ -12,7 +12,9 @@ import com.mertgolcu.wellbender.R
 import com.mertgolcu.wellbender.core.base.BaseFragment
 import com.mertgolcu.wellbender.databinding.FragmentHomeBinding
 import com.mertgolcu.wellbender.domain.model.card.BaseCardModel
+import com.mertgolcu.wellbender.ui.home.adapter.CardAdapter
 import com.mertgolcu.wellbender.ui.home.adapter.EmotionAdapter
+import com.mertgolcu.wellbender.ui.home.adapter.EmotionHelper
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -24,6 +26,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     override fun getViewModelClass() = HomeViewModel::class.java
 
     private var emotionAdapter: EmotionAdapter? = null
+    private var cardAdapter: CardAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,6 +34,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         initObservers()
         initWelcome()
         initEmotion()
+        initCards()
         initTodayCard()
         initBuyMoreCard()
         initQuote()
@@ -43,11 +47,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         viewModel.todayEmotionMood.observe(viewLifecycleOwner) {
             binding.layoutDailyEmotion.isVisible = false
         }
+        viewModel.cardList.observe(viewLifecycleOwner) {
+            cardAdapter?.submitList(it)
+        }
         viewModel.todayCard.observe(viewLifecycleOwner) {
-            initTodayCard(it)
+            initTodayCard(null)
         }
         viewModel.buyMoreCard.observe(viewLifecycleOwner) {
-            initBuyMoreCard(it)
+            initBuyMoreCard(null)
         }
         viewModel.quote.observe(viewLifecycleOwner) {
             initQuote(it)
@@ -60,6 +67,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
                 .circleCrop()
                 .into(binding.imageViewAvatar)
         }
+        viewModel.todayEmotionMood.observe(viewLifecycleOwner) {
+            if (it != null) {
+                binding.layoutCurrentEmotion.root.isVisible = true
+                EmotionHelper(it.emotion, binding.layoutCurrentEmotion).bind {
+                    binding.layoutCurrentEmotion.root.isVisible = false
+                    binding.layoutDailyEmotion.isVisible = true
+                }
+            }
+        }
     }
 
     private fun initWelcome() {
@@ -68,6 +84,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
     private fun initEmotion() {
         initEmotionAdapter()
+    }
+
+    private fun initCards() {
+        cardAdapter = CardAdapter()
+        binding.recyclerViewCards.layoutManager = LinearLayoutManager(requireActivity())
+        binding.recyclerViewCards.adapter = cardAdapter
     }
 
     private fun initTodayCard(todayCard: BaseCardModel? = null) {
